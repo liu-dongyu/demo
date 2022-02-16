@@ -20,8 +20,6 @@ server.use(
       res.setHeader("Accept-Ranges", "bytes");
       res.setHeader("Access-Control-Allow-Headers", "Range");
       res.setHeader("Access-Control-Expose-Headers", "Accept-Ranges");
-      res.setHeader("Access-Control-Max-Age", "600");
-      res.setHeader("Access-Control-Allow-Origin", "*");
     },
   })
 );
