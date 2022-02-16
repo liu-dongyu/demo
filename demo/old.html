@@ -2,12 +2,9 @@
   <head>
     <meta charset="utf-8" />
     <script src="https://cdn.bootcdn.net/ajax/libs/pdf.js/2.3.200/pdf.min.js"></script>
-  </head>
-  <body style="margin: 0" onload="onload()">
-    <canvas id="pageContainer" style="width: 100vw; height: 100vh"></canvas>
 
     <script>
-      const onload = () => {
+      window.onload = function () {
         pdfjsLib.GlobalWorkerOptions.workerSrc =
           "https://cdn.bootcdn.net/ajax/libs/pdf.js/2.3.200/pdf.worker.min.js";
 
@@ -18,7 +15,7 @@
           rangeChunkSize: 65536 * 16,
         });
 
-        (async () => {
+        (async function () {
           const pdfDocument = await loadingTask.promise;
           const page = await pdfDocument.getPage(1);
 
@@ -31,5 +28,8 @@
         })();
       };
     </script>
+  </head>
+  <body style="margin: 0">
+    <canvas id="pageContainer" style="width: 100vw; height: 100vh"></canvas>
   </body>
 </html>
