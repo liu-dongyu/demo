@@ -1,8 +1,8 @@
 const Koa = require("koa");
 const next = require("next");
 const static = require("koa-static");
-const mount = require("koa-mount");
 const range = require("koa-range");
+const path = require("path");
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -28,8 +28,7 @@ app.prepare().then(() => {
   });
 
   server.use(range);
-  server.use(static("./pdf", staticOptions));
-  server.use(mount("/pdf", static("./pdf", staticOptions)));
+  server.use(static(path.join(__dirname, "pdf"), staticOptions));
 
   server.listen(port, () => {
     console.log(`> Ready on http://localhost:${port}`);
